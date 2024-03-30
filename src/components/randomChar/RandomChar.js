@@ -17,12 +17,21 @@ class RandomChar extends Component {
 
   componentDidMount() {
     this.updateChar();
+    // this.timerId = setInterval(this.updateChar, 15000);
   }
 
-  componentWillUnmount() {}
+  // componentWillUnmount() {
+  //   clearInterval(this.timerId);
+  // }
 
   onCharLoaded = (char) => {
     this.setState({ char, loading: false });
+  };
+
+  onCharLoading = () => {
+    this.setState({
+      loading: true,
+    });
   };
 
   onError = () => {
@@ -38,7 +47,7 @@ class RandomChar extends Component {
   };
 
   onTryItClick = () => {
-    this.setState({ loading: true });
+    this.onCharLoading();
     this.updateChar();
   };
 
